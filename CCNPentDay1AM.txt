@@ -146,9 +146,9 @@ vlan 10
 vlan 50
    name IPCCTVLAN
 vlan 69
-   name nameMO
+   name ERWIN
 vlan 70
-    name FAVEcolor
+    name BLUE
 vlan 71
     name HR-fu
 vlan 100
@@ -209,7 +209,7 @@ config t
      exec-timeout 0 0
     line vty 0 14
       password pass
-      login
+      login   
       exec-timeout 0 0
    Int Fa 0/0
      no shutdown
@@ -259,16 +259,16 @@ ephone-dn 7
 ephone-dn 8
   number 1288
  ephone-dn 9
-   number 1227
+   number 1215
 ephone-dn 10
-  number 1298
+  number 1295
 Ephone 1
-  Mac-address cafe.face.baba
+  Mac-address ccd8.c1fb.161b
   type 8945
   button 1:8 2:7 3:6 4:9
   restart
 Ephone 2
-  Mac-address fafa.caca.baba
+  Mac-address 64e9.50ca.747e
   type 8945
   button 1:4 2:3 3:2 4:10
   restart  
@@ -417,16 +417,16 @@ Interface gi 0/0/0
 end
 
 @CoreBABA:
-config t
-router ospf 1
-router-id 10.12.12.4
-network 10.12.0.0  0.0.255.255 area 0
-int gi 0/1
- ip ospf network point-to-point
-int Vlan 100
- ip ospf 1 area 0
- ip ospf priority 255
-end
+	config t
+	router ospf 1
+	router-id 10.12.12.4
+	network 10.12.0.0  0.0.255.255 area 0
+	int gi 0/1
+	 ip ospf network point-to-point
+	int Vlan 100
+	 ip ospf 1 area 0
+	 ip ospf priority 255
+	end
 
 @CUCM:
 config t
@@ -709,7 +709,7 @@ conf t
  username admin privilege 15 secret pass
  aaa new-model
  radius server WINRAD
-  address ipv4 10.m.1.8 auth-port 1812 acct-port 1813
+  address ipv4 10.12.1.8 auth-port 1812 acct-port 1813
   key keykeymo
   exit
  aaa group server radius RADGROUP
@@ -719,5 +719,5 @@ conf t
  aaa authorization exec default group RADGROUP local
  line vty 0 14
   login authentication default
- nd
+ end
 
